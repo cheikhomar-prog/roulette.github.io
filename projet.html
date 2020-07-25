@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="roulette.css">
+    </head>
+    <body>
+        <div id="entente">
+                <h1>
+                Jeu de la Roulette
+                </h1>
+                <div>
+                    <marquee bgcolor=""WIDTH="100%" DIRECTION="left" LOOP="2">
+                        <img src="images/img1.jpg" alt="image"/>
+                        <img src="images/img2-png.png" alt="image"/>
+                        <img src="images/img3.jpg" alt="image"/>
+                        <img src="images/img4.jpg" alt="image"/>
+                        <img src="images/img5.jpg" alt="image"/>
+                        <img src="images/img6.jpg" alt="image"/>
+                    </marquee>
+                </div>
+        </div><br>
+        <div>
+            <h2>
+                BIENVENE CHERS CLIENTS(es) FAÎTES VOUS LES POCHES PLEINES D'ARGENT !!!<br>
+                VOUS ÊTES LES MAÎTRES DU JEU !!!
+            </h2>
+            <form>
+                <div>
+                    <label>Pari</label>
+                </div>
+                <select>
+                    <option value="40" >pair</option>
+                    <option value="41">impair</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                </select><br>
+                <div>
+                <label>Argent Mise (En milliers de CFA)</label>
+                <input type="number" placeholder="Entrez Votre Mise" id="lonase">
+                </div>
+                <div>
+                    <input type="button" value="GO!" onclick="jeu()"><br>
+                </div>
+                <div>
+                <label>Cliquez Pour Connaître Vos Gains</label>
+                <input type="button" value="clique!" onclick="showMe()">
+                </div>
+            </form>
+        </div>
+        <script>
+            var valeurAleatoire;
+            var choice;
+            var porteMonnaie=100;
+            var argentOrdi=0;
+            var argentParie;
+            function hasard(min,max){
+                let aleatoire= Math.floor(Math.random()*(max-min));
+                return aleatoire;
+            }
+
+            function choixDuNombre(){
+                let selections=document.querySelector("select");
+                let nbreChoisi=selections.options[selections.selectedIndex].value;
+                return nbreChoisi;
+            }
+
+            function jeu(){
+                var valeurAleatoire=hasard(0,36);
+                console.log(valeurAleatoire);
+                choice=choixDuNombre();
+                var gain;
+                argentParie=document.getElementById("lonase").value;
+                if (choice==valeurAleatoire){
+                    gain=argentParie+35*argentParie;
+                    porteMonnaie+=gain;
+                    alert("Félicitation! vous venez de gagner "+gain+"000 cfa");
+                }
+                else if (choice==40 && valeurAleatoire%2==0){
+                    gain=argentParie*2;
+                    porteMonnaie+=gain;
+                    alert("Félicitation! vous venez de gagner "+gain+"000 cfa");
+                }
+                else if (choice==41 && valeurAleatoire%2!=0){
+                    gain=argentParie*2;
+                    porteMonnaie+=gain;
+                    alert("Félicitation! vous venez de gagner "+gain+"000 cfa");
+                }
+                else{
+                    porteMonnaie=porteMonnaie-argentParie;
+                    argentOrdi+=argentParie;
+                    alert("Oh perdu! La chance n'a pas était de votre côté cette fois-ci. Rejouer Vite !!!");
+                }
+            }
+
+            function showMe(){
+                alert("Pour l'heure vos gains s'élèvent à "+porteMonnaie+"000 cfa\nVos pertes s'élèvent à "+argentOrdi+"000 cfa");
+            }
+        </script>
+    </body>
+</html>

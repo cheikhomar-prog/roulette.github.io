@@ -1,0 +1,25 @@
+#entente{
+    height: 460px; 
+    background-color: green;
+}
+label{
+    margin-top:10px;
+    display:  block;
+}
+input[type="button"],input[type="number"]{
+    width: 100px;
+    margin-left: 5px;
+    box-shadow: 1px 2px #D83F3D;
+    cursor: pointer;
+}
+input,textarea,select{
+    padding: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    width: 200px;
+}
+img{
+    height: 400px;
+    width: 400px;
+}
